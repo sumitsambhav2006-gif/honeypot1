@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Security Alerts{% endblock %}
+{% block page_title %}Security Incident Triage & Notifications{% endblock %}
+
+{% block content %}
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">🚨 Automated Security Incident Alerts</div>
+      <div class="card-subtitle">Real-time alerts triggered by brute force thresholds and dangerous command heuristics</div>
+    </div>
+    <div style="display: flex; gap: 12px;">
+      <select id="alert-severity-filter" class="form-input" style="font-size: 12px;">
+        <option value="">All Severities</option>
+        <option value="Critical">Critical</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Time (UTC)</th>
+          <th>Severity</th>
+          <th>Risk Score</th>
+          <th>Incident Title</th>
+          <th>Attacker Source IP</th>
+          <th>Triage Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="alerts-tbody">
+        <tr>
+          <td colspan="7" style="text-align: center; color: var(--text-muted);">Loading alert queue...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+async function loadAlerts(severity = '') {
+  try {
+    const url = severity ? `/api/alerts?severity=${encodeURIComponent(severity)}` : '/api/alerts';
+    const res = await fetch(url);
+    const data = await res.json();
+    const tbody = document.getElementById('alerts-tbody');
+
+    if (data.alerts && data.alerts.length > 0) {
+      tbody.innerHTML = data.alerts.map(al => {
+        let sevBadge = 'badge-low';
+        if (al.severity === 'Critical') sevBadge = 'badge-critical';
+        else if (al.severity === 'High') sevBadge = 'badge-high';
+        else if (al.severity === 'Medium') sevBadge = 'badge-medium';
+
+        let statBadge = al.status === 'resolved' ? 'badge-low' : (al.status === 'investigating' ? 'badge-medium' : 'badge-high');
+
+        return `
+          <tr>
+            <td class="mono-cell">${al.timestamp ? al.timestamp.replace('T', ' ').substring(0, 19) : '-'}</td>
+            <td><span class="badge ${sevBadge}">${escapeHtml(al.severity)}</span></td>
+            <td class="mono-cell" style="font-weight: 700;">${al.risk_score}</td>
+            <td>
+              <div style="font-weight: 600; color: #fff;">${escapeHtml(al.title)}</div>
+              <div style="font-size: 11px; color: var(--text-muted);">${escapeHtml(al.description || '')}</div>
+            </td>
+            <td class="mono-cell">${escapeHtml(al.source_ip)} <span style="font-size: 11px; color: var(--text-muted);">(${escapeHtml(al.country || 'N/A')})</span></td>
+            <td><span id="alert-status-${al.id}" class="badge ${statBadge}">${escapeHtml(al.status)}</span></td>
+            <td>
+              <select onchange="updateAlertStatus(${al.id}, this.value)" class="form-input" style="padding: 3px 6px; font-size: 11px;">
+                <option value="open" ${al.status === 'open' ? 'selected' : ''}>Open</option>
+                <option value="investigating" ${al.status === 'investigating' ? 'selected' : ''}>Investigating</option>
+                <option value="resolved" ${al.status === 'resolved' ? 'selected' : ''}>Resolved</option>
+                <option value="dismissed" ${al.status === 'dismissed' ? 'selected' : ''}>Dismissed</option>
+              </select>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    } else {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No active security alerts.</td></tr>';
+    }
+  } catch (err) {
+    console.error('Error fetching alerts:', err);
+  }
+}
+
+document.getElementById('alert-severity-filter').addEventListener('change', (e) => {
+  loadAlerts(e.target.value);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadAlerts();
+});
+</script>
+{% endblock %}
+

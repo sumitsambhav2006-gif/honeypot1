@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}System & Honeypots{% endblock %}
+{% block page_title %}Honeypot Sensor Nodes & Operational Settings{% endblock %}
+
+{% block content %}
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">🖥️ Registered Honeypot Sensor Nodes</div>
+      <div class="card-subtitle">Active SSH / Telnet simulation daemons synchronized with IHTIP collector</div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Node Name</th>
+          <th>Sensor Type</th>
+          <th>Endpoint</th>
+          <th>Status</th>
+          <th>Last Heartbeat (UTC)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hp in honeypots %}
+        <tr>
+          <td style="font-weight: 600; color: #fff;">{{ hp.name }}</td>
+          <td><span class="badge badge-medium">{{ hp.type }}</span></td>
+          <td class="mono-cell">{{ hp.ip_address }}:{{ hp.port }}</td>
+          <td>
+            <span class="badge {% if hp.status == 'active' %}badge-active{% elif hp.status == 'degraded' %}badge-high{% else %}badge-critical{% endif %}">
+              {{ hp.status|upper }}
+            </span>
+          </td>
+          <td class="mono-cell" style="font-size: 11px;">{{ hp.last_heartbeat }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="5" style="text-align: center; color: var(--text-muted);">No honeypot nodes registered.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="cyber-card" style="margin-top: 24px;">
+  <div class="card-title" style="margin-bottom: 12px;">🛡️ SOC Hardening & Production Checklist</div>
+  <ul style="font-size: 13px; color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+    <li><b>Dedicated Non-Root User:</b> Honeypot services run under unprivileged <code>cowrie</code> account.</li>
+    <li><b>Network Sandboxing:</b> Honeypot listening on port 2222 with external port 22 redirected via iptables.</li>
+    <li><b>Zero Outbound Abuse:</b> Egress firewall rules prevent honeypot from participating in DDoS attacks or lateral pivoting.</li>
+    <li><b>Credential Protection:</b> Attacker passwords are automatically hashed with salted metadata length representation.</li>
+    <li><b>Host Command Isolation:</b> Captured attacker commands are never executed on host machine; parsed purely as telemetry.</li>
+  </ul>
+</div>
+{% endblock %}
+

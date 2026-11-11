@@ -1,0 +1,17 @@
+[Unit]
+Description=IHTIP Honeypot Log Watcher & Ingestion Service
+After=network.target cowrie.service mysql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/intelligent-honeypot-platform
+ExecStart=/opt/intelligent-honeypot-platform/venv/bin/python /opt/intelligent-honeypot-platform/run.py collector
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/ihtip/collector.log
+StandardError=append:/var/log/ihtip/collector_error.log
+
+[Install]
+WantedBy=multi-user.target
+

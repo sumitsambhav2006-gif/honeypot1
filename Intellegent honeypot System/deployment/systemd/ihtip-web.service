@@ -1,0 +1,17 @@
+[Unit]
+Description=IHTIP SOC Web Platform & REST API Service
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/intelligent-honeypot-platform
+ExecStart=/opt/intelligent-honeypot-platform/venv/bin/python /opt/intelligent-honeypot-platform/run.py web
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/ihtip/web.log
+StandardError=append:/var/log/ihtip/web_error.log
+
+[Install]
+WantedBy=multi-user.target
+

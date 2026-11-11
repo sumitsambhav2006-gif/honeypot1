@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # MySQL Production Database
+  mysql-db:
+    image: mysql:8.0
+    container_name: ihtip-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: honeypot_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    networks:
+      - ihtip-net
+
+  # Cowrie SSH Honeypot
+  cowrie:
+    image: cowrie/cowrie:latest
+    container_name: ihtip-cowrie
+    restart: always
+    ports:
+      - "2222:2222"
+    volumes:
+      - cowrie_logs:/cowrie/cowrie-git/var/log/cowrie
+      - ./honeypot/cowrie/cowrie.cfg:/cowrie/cowrie-git/etc/cowrie.cfg:ro
+    networks:
+      - ihtip-net
+
+  # IHTIP Platform (Web SOC Dashboard + Event Collector)
+  ihtip-soc:
+    build: .
+    container_name: ihtip-platform
+    restart: always
+    depends_on:
+      - mysql-db
+      - cowrie
+    ports:
+      - "5000:5000"
+    environment:
+      DB_TYPE: mysql
+      DB_HOST: mysql-db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: honeypot_db
+      COWRIE_LOG_PATH: /var/log/cowrie/cowrie.json
+    volumes:
+      - cowrie_logs:/var/log/cowrie:ro
+    networks:
+      - ihtip-net
+
+volumes:
+  mysql_data:
+  cowrie_logs:
+
+networks:
+  ihtip-net:
+    driver: bridge
+

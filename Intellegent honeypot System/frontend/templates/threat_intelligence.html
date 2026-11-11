@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Threat Intelligence & Scoring{% endblock %}
+{% block page_title %}Threat Scoring Engine & Risk Model{% endblock %}
+
+{% block content %}
+<!-- Risk Model Formula Banner -->
+<div class="cyber-card" style="border-left: 4px solid var(--cyber-cyan);">
+  <div class="card-title" style="margin-bottom: 8px;">🧮 Industry-Standard Risk Scoring Formulation</div>
+  <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+    Each attacker session is continuously scored using the cumulative activity risk formula:
+    <span style="display: block; margin: 10px 0; font-family: var(--font-mono); font-size: 15px; color: var(--cyber-cyan); background: #06090e; padding: 10px 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+      RiskScore = min( 100, &sum; ActivityScores )
+    </span>
+    Sessions are classified into actionable SOC operational bands: <b>0–29 Low</b> (Monitoring), <b>30–59 Medium</b> (Suspicious), <b>60–79 High</b> (Active Attack), and <b>80–100 Critical</b> (Automated Containment / Alert).
+  </p>
+</div>
+
+<div class="charts-grid-2">
+  <!-- Risk Distribution Donut Chart -->
+  <div class="cyber-card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">🎯 Threat Severity Distribution</div>
+        <div class="card-subtitle">Active attacker sessions by computed risk severity tier</div>
+      </div>
+    </div>
+    <div class="chart-box">
+      <canvas id="riskDonutChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Scoring Weights Table -->
+  <div class="cyber-card">
+    <div class="card-header">
+      <div class="card-title">⚖️ Activity Scoring Model</div>
+    </div>
+    <div class="table-responsive">
+      <table class="cyber-table">
+        <thead>
+          <tr>
+            <th>Observed Attacker Activity</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Single Failed SSH Login Attempt</td><td class="mono-cell">+5 pts</td></tr>
+          <tr><td>Username Enumeration (Multiple distinct users)</td><td class="mono-cell">+10 pts</td></tr>
+          <tr><td>Reconnaissance Commands (whoami, id, uname)</td><td class="mono-cell">+15 pts</td></tr>
+          <tr><td>Suspicious File Retrieval (wget, curl, ftpget)</td><td class="mono-cell">+20 pts</td></tr>
+          <tr><td>Persistence Establishment (crontab, cron jobs)</td><td class="mono-cell">+20 pts</td></tr>
+          <tr><td>Privilege Escalation Attempt (sudo -l, shadow)</td><td class="mono-cell">+20 pts</td></tr>
+          <tr><td>Destructive Command Attempt (rm -rf, mkfs, dd)</td><td class="mono-cell">+25 pts</td></tr>
+          <tr><td>Interactive Reverse Shell Attempt</td><td class="mono-cell">+25 pts</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Country Threat Origin Chart -->
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">🌍 Global Attack Geographic Distribution</div>
+      <div class="card-subtitle">Enriched threat origin distribution by nation</div>
+    </div>
+  </div>
+  <div class="chart-box" style="height: 320px;">
+    <canvas id="countryBarChart"></canvas>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // 1. Fetch Analytics Overview
+    const res = await fetch('/api/analytics/overview');
+    const data = await res.json();
+
+    const donutCtx = document.getElementById('riskDonutChart');
+    if (donutCtx && data.risk_distribution) {
+      CyberCharts.renderRiskDonut(donutCtx, data.risk_distribution);
+    }
+
+    // 2. Fetch Dashboard stats for Country chart
+    const dashRes = await fetch('/api/dashboard/stats');
+    const dashData = await dashRes.json();
+    const countryCtx = document.getElementById('countryBarChart');
+    if (countryCtx && dashData.country_distribution) {
+      const countries = dashData.country_distribution.map(c => c.country);
+      const counts = dashData.country_distribution.map(c => c.attack_count);
+      CyberCharts.renderCountryBar(countryCtx, countries, counts);
+    }
+  } catch (err) {
+    console.error('Error rendering threat intelligence visuals:', err);
+  }
+});
+</script>
+{% endblock %}
+

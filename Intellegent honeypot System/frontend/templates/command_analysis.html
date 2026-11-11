@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Command Analysis{% endblock %}
+{% block page_title %}Terminal Command Behavior & MITRE ATT&CK Mapping{% endblock %}
+
+{% block content %}
+<div class="charts-grid-2">
+  <!-- Command Categories Distribution Bar Chart -->
+  <div class="cyber-card">
+    <div class="card-header">
+      <div>
+        <div class="card-title">📊 Command Intent Breakdown</div>
+        <div class="card-subtitle">Classification by attack tactics (Reconnaissance, Malware Ingress, Persistence)</div>
+      </div>
+    </div>
+    <div class="chart-box">
+      <canvas id="commandCategoryChart"></canvas>
+    </div>
+  </div>
+
+  <!-- MITRE ATT&CK Summary Info -->
+  <div class="cyber-card">
+    <div class="card-header">
+      <div class="card-title">🛡️ MITRE Framework Alignment</div>
+    </div>
+    <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+      <div><span class="badge badge-critical">T1105</span> <b>Ingress Tool Transfer:</b> <code>wget, curl, ftpget</code></div>
+      <div><span class="badge badge-high">T1053</span> <b>Persistence:</b> <code>crontab, /etc/cron*</code></div>
+      <div><span class="badge badge-high">T1068</span> <b>Privilege Escalation:</b> <code>sudo -l, /etc/shadow</code></div>
+      <div><span class="badge badge-medium">T1082</span> <b>System Discovery:</b> <code>uname, /proc/cpuinfo, id</code></div>
+      <div><span class="badge badge-medium">T1016</span> <b>Network Discovery:</b> <code>netstat, ifconfig, arp</code></div>
+    </div>
+  </div>
+</div>
+
+<!-- All Captured Commands Table -->
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">💻 Captured Adversary Commands</div>
+      <div class="card-subtitle">Zero host execution sandbox isolation · Raw input preservation</div>
+    </div>
+    <div style="display: flex; gap: 12px;">
+      <input type="text" id="cmd-search" class="form-input" placeholder="Search commands..." onkeyup="filterTable('cmd-search', 'commands-table')">
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="cyber-table" id="commands-table">
+      <thead>
+        <tr>
+          <th>Timestamp (UTC)</th>
+          <th>Session</th>
+          <th>Shell Command Input</th>
+          <th>Category</th>
+          <th>Risk Points</th>
+        </tr>
+      </thead>
+      <tbody id="commands-tbody">
+        <tr>
+          <td colspan="5" style="text-align: center; color: var(--text-muted);">Loading commands...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // 1. Fetch Analytics for Category Chart
+    const anRes = await fetch('/api/analytics/overview');
+    const anData = await anRes.json();
+    const ctx = document.getElementById('commandCategoryChart');
+    if (ctx && anData.command_categories) {
+      const labels = anData.command_categories.map(c => c.category);
+      const counts = anData.command_categories.map(c => c.count);
+      CyberCharts.renderCommandCategories(ctx, labels, counts);
+    }
+
+    // 2. Fetch Commands Table
+    const res = await fetch('/api/commands?limit=100');
+    const data = await res.json();
+    const tbody = document.getElementById('commands-tbody');
+
+    if (data.commands && data.commands.length > 0) {
+      tbody.innerHTML = data.commands.map(c => {
+        let catBadge = 'badge-medium';
+        if (c.risk_points >= 20) catBadge = 'badge-critical';
+        else if (c.risk_points >= 15) catBadge = 'badge-high';
+        else if (c.risk_points <= 5) catBadge = 'badge-low';
+
+        return `
+          <tr>
+            <td class="mono-cell">${c.timestamp ? c.timestamp.replace('T', ' ').substring(0, 19) : '-'}</td>
+            <td class="mono-cell">${escapeHtml(c.session_uuid || 'N/A')}</td>
+            <td style="font-family: var(--font-mono); color: #38bdf8;">
+              <code>$ ${escapeHtml(c.command)}</code>
+            </td>
+            <td><span class="badge ${catBadge}">${escapeHtml(c.category)}</span></td>
+            <td class="mono-cell" style="color: var(--cyber-cyan);">+${c.risk_points} pts</td>
+          </tr>
+        `;
+      }).join('');
+    } else {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No command records logged.</td></tr>';
+    }
+  } catch (err) {
+    console.error('Error fetching command data:', err);
+  }
+});
+</script>
+{% endblock %}
+

@@ -1,0 +1,226 @@
+[2026-11-09 00:29:50] [INFO] [ihtip-log-watcher:44]: Processed 12 initial events from cowrie.json.
+[2026-11-09 01:26:54] [INFO] [ihtip-runner:25]: [*] Starting IHTIP SOC Dashboard at http://0.0.0.0:5000
+[2026-11-09 01:26:54] [INFO] [ihtip-runner:31]: [*] Starting IHTIP Log Watcher & Event Collector...
+[2026-11-09 01:26:55] [INFO] [ihtip-log-watcher:44]: Processed 12 initial events from cowrie.json.
+[2026-11-09 01:26:55] [INFO] [ihtip-log-watcher:50]: [*] Starting LogWatcher on: D:\Intellegent honeypot System\logs\cowrie.json
+[2026-11-10 21:53:09] [INFO] [ihtip-runner:31]: [*] Starting IHTIP Log Watcher & Event Collector...
+[2026-11-10 21:53:09] [INFO] [ihtip-runner:25]: [*] Starting IHTIP SOC Dashboard at http://0.0.0.0:5000
+[2026-11-10 21:53:09] [INFO] [ihtip-log-watcher:44]: Processed 12 initial events from cowrie.json.
+[2026-11-10 21:53:09] [INFO] [ihtip-log-watcher:50]: [*] Starting LogWatcher on: D:\Intellegent honeypot System\logs\cowrie.json
+[2026-11-10 21:53:22] [INFO] [ihtip-runner:25]: [*] Starting IHTIP SOC Dashboard at http://0.0.0.0:5000
+[2026-11-10 21:56:19] [INFO] [ihtip-runner:31]: [*] Starting IHTIP Log Watcher & Event Collector...
+[2026-11-10 21:56:19] [INFO] [ihtip-runner:25]: [*] Starting IHTIP SOC Dashboard at http://0.0.0.0:5000
+[2026-11-10 21:56:20] [INFO] [ihtip-log-watcher:44]: Processed 12 initial events from cowrie.json.
+[2026-11-10 21:56:20] [INFO] [ihtip-log-watcher:50]: [*] Starting LogWatcher on: D:\Intellegent honeypot System\logs\cowrie.json
+[2026-11-10 22:07:28] [INFO] [ihtip-ssh-honeypot:54]: [*] Generating 2048-bit RSA host key at D:\Intellegent honeypot System\data\ssh_host_rsa.key...
+[2026-11-10 22:07:29] [INFO] [ihtip-ssh-honeypot:534]: [+] REAL SSH HONEYPOT LISTENING on 127.0.0.1:62121 (Banner: OpenSSH 8.9p1 Ubuntu)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 174)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 175)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 176)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 177)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 178)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 179)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 180)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.file_download from 127.0.0.1 (ID: 181)
+[2026-11-10 22:07:29] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 182)
+[2026-11-10 22:07:30] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 185.220.101.5 (ID: 183)
+[2026-11-10 22:12:32] [INFO] [ihtip-ssh-honeypot:534]: [+] REAL SSH HONEYPOT LISTENING on 127.0.0.1:57086 (Banner: OpenSSH 8.9p1 Ubuntu)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 184)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 185)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 186)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 187)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 188)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 189)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 190)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.file_download from 127.0.0.1 (ID: 191)
+[2026-11-10 22:12:32] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 192)
+[2026-11-10 22:12:32] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:57087 [session=cd21ad61d5f4]
+[2026-11-10 22:12:32] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:57088 [session=52fc012b66db]
+[2026-11-10 22:12:32] [DEBUG] [ihtip-ssh-honeypot:495]: [HONEYPOT] Connection cd21ad61d5f4 ended: Error reading SSH protocol banner[WinError 10053] An established connection was aborted by the software in your host machine
+[2026-11-10 22:12:32] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session cd21ad61d5f4 closed (1s)
+[2026-11-10 22:12:32] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: admin@127.0.0.1 (attempt #1)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 193)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 194)
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:57089 [session=0ab0dacdc101]
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:369]: [HONEYPOT] Login SUCCESS: ubuntu@127.0.0.1 (session=0ab0dacdc101)
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 0ab0dacdc101 closed (1s)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 195)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 196)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 197)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.success from 127.0.0.1 (ID: 198)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 199)
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:57090 [session=e2b9533dc966]
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: oracle@127.0.0.1 (attempt #1)
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:57091 [session=4e791997ba9f]
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: deploy@127.0.0.1 (attempt #1)
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:57092 [session=8fc1175514c0]
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: postgres@127.0.0.1 (attempt #1)
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:57093 [session=5f5baa4b02bb]
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: root@127.0.0.1 (attempt #1)
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:57094 [session=81f7dc33152f]
+[2026-11-10 22:12:33] [INFO] [ihtip-ssh-honeypot:369]: [HONEYPOT] Login SUCCESS: root@127.0.0.1 (session=81f7dc33152f)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 200)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 201)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 202)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 203)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 204)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 205)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 206)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 207)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 208)
+[2026-11-10 22:12:33] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.success from 127.0.0.1 (ID: 209)
+[2026-11-10 22:12:34] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 210)
+[2026-11-10 22:12:34] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 211)
+[2026-11-10 22:12:34] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 212)
+[2026-11-10 22:12:35] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 213)
+[2026-11-10 22:12:35] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 214)
+[2026-11-10 22:12:35] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 215)
+[2026-11-10 22:12:35] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.file_download from 127.0.0.1 (ID: 216)
+[2026-11-10 22:12:36] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 217)
+[2026-11-10 22:12:36] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 218)
+[2026-11-10 22:12:36] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 219)
+[2026-11-10 22:12:37] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 81f7dc33152f closed (3s)
+[2026-11-10 22:12:37] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 220)
+[2026-11-10 22:12:37] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 221)
+[2026-11-10 22:12:37] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.connect from 194.26.29.112 (ID: 222)
+[2026-11-10 22:12:37] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.failed from 194.26.29.112 (ID: 223)
+[2026-11-10 22:12:38] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.login.failed from 194.26.29.112 (ID: 224)
+[2026-11-10 22:12:38] [INFO] [ihtip-log-watcher:72]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 225)
+[2026-11-10 22:13:40] [INFO] [ihtip-ssh-honeypot:534]: [+] REAL SSH HONEYPOT LISTENING on 0.0.0.0:2222 (Banner: OpenSSH 8.9p1 Ubuntu)
+[2026-11-10 22:13:40] [INFO] [ihtip-runner:25]: [*] Starting IHTIP SOC Dashboard at http://0.0.0.0:5000
+[2026-11-10 22:13:40] [INFO] [ihtip-runner:31]: [*] Starting IHTIP Log Watcher & Event Collector...
+[2026-11-10 22:13:41] [INFO] [ihtip-log-watcher:68]: Processed 64 new backlog events from cowrie.json.
+[2026-11-10 22:13:41] [INFO] [ihtip-log-watcher:74]: [*] Starting LogWatcher on: D:\Intellegent honeypot System\logs\cowrie.json
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:58122 [session=21a8ac6c97a5]
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:58123 [session=f3928b3a386a]
+[2026-11-10 22:14:13] [DEBUG] [ihtip-ssh-honeypot:495]: [HONEYPOT] Connection 21a8ac6c97a5 ended: Error reading SSH protocol banner[WinError 10053] An established connection was aborted by the software in your host machine
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 21a8ac6c97a5 closed (1s)
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: admin@127.0.0.1 (attempt #1)
+[2026-11-10 22:14:13] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 290)
+[2026-11-10 22:14:13] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 291)
+[2026-11-10 22:14:13] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 292)
+[2026-11-10 22:14:13] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 293)
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:58124 [session=12787b0a22cf]
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:369]: [HONEYPOT] Login SUCCESS: ubuntu@127.0.0.1 (session=12787b0a22cf)
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 12787b0a22cf closed (1s)
+[2026-11-10 22:14:13] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 294)
+[2026-11-10 22:14:13] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.success from 127.0.0.1 (ID: 295)
+[2026-11-10 22:14:13] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 296)
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:58125 [session=facdd93a7a1b]
+[2026-11-10 22:14:13] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: oracle@127.0.0.1 (attempt #1)
+[2026-11-10 22:14:14] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 297)
+[2026-11-10 22:14:14] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 298)
+[2026-11-10 22:14:14] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:58126 [session=999da3e333dd]
+[2026-11-10 22:14:14] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: deploy@127.0.0.1 (attempt #1)
+[2026-11-10 22:14:14] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 299)
+[2026-11-10 22:14:14] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 300)
+[2026-11-10 22:14:14] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:58127 [session=09f036aa44a1]
+[2026-11-10 22:14:14] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: postgres@127.0.0.1 (attempt #1)
+[2026-11-10 22:14:14] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 301)
+[2026-11-10 22:14:14] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 302)
+[2026-11-10 22:14:15] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:58128 [session=dd31c32495e4]
+[2026-11-10 22:14:15] [INFO] [ihtip-ssh-honeypot:381]: [HONEYPOT] Login FAILED: root@127.0.0.1 (attempt #1)
+[2026-11-10 22:14:15] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 303)
+[2026-11-10 22:14:15] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.failed from 127.0.0.1 (ID: 304)
+[2026-11-10 22:14:15] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:58129 [session=3c04f1b3f655]
+[2026-11-10 22:14:15] [INFO] [ihtip-ssh-honeypot:369]: [HONEYPOT] Login SUCCESS: root@127.0.0.1 (session=3c04f1b3f655)
+[2026-11-10 22:14:15] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 127.0.0.1 (ID: 305)
+[2026-11-10 22:14:15] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.success from 127.0.0.1 (ID: 306)
+[2026-11-10 22:14:16] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 307)
+[2026-11-10 22:14:16] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 308)
+[2026-11-10 22:14:17] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 309)
+[2026-11-10 22:14:18] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 310)
+[2026-11-10 22:14:18] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 311)
+[2026-11-10 22:14:19] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 312)
+[2026-11-10 22:14:19] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.file_download from 127.0.0.1 (ID: 313)
+[2026-11-10 22:14:20] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 314)
+[2026-11-10 22:14:21] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 315)
+[2026-11-10 22:14:21] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 316)
+[2026-11-10 22:14:22] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 3c04f1b3f655 closed (6s)
+[2026-11-10 22:14:22] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 127.0.0.1 (ID: 317)
+[2026-11-10 22:14:22] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 318)
+[2026-11-10 22:14:23] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session f3928b3a386a closed (10s)
+[2026-11-10 22:14:23] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 999da3e333dd closed (8s)
+[2026-11-10 22:14:23] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session dd31c32495e4 closed (7s)
+[2026-11-10 22:14:23] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 319)
+[2026-11-10 22:14:23] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 320)
+[2026-11-10 22:14:23] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 321)
+[2026-11-10 22:14:23] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 09f036aa44a1 closed (8s)
+[2026-11-10 22:14:23] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session facdd93a7a1b closed (9s)
+[2026-11-10 22:14:23] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 322)
+[2026-11-10 22:14:23] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 127.0.0.1 (ID: 323)
+[2026-11-10 22:16:31] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 192.168.1.10:55612 [session=7d6e83a2b80c]
+[2026-11-10 22:16:31] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 192.168.1.10 (ID: 324)
+[2026-11-10 22:17:07] [INFO] [ihtip-ssh-honeypot:369]: [HONEYPOT] Login SUCCESS: admin@192.168.1.10 (session=7d6e83a2b80c)
+[2026-11-10 22:17:07] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.success from 192.168.1.10 (ID: 325)
+[2026-11-10 22:17:23] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 192.168.1.10 (ID: 326)
+[2026-11-10 22:19:10] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 7d6e83a2b80c closed (158s)
+[2026-11-10 22:19:10] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 192.168.1.10 (ID: 327)
+[2026-11-10 22:24:22] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 192.168.1.10:40602 [session=0c3cb9e4d948]
+[2026-11-10 22:24:22] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 192.168.1.10 (ID: 328)
+[2026-11-10 22:24:47] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 0c3cb9e4d948 closed (25s)
+[2026-11-10 22:24:47] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 192.168.1.10 (ID: 329)
+[2026-11-10 22:26:52] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 192.168.1.10:56616 [session=be4a209b4ecd]
+[2026-11-10 22:26:52] [DEBUG] [ihtip-ssh-honeypot:495]: [HONEYPOT] Connection be4a209b4ecd ended: Error reading SSH protocol banner
+[2026-11-10 22:26:52] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session be4a209b4ecd closed (1s)
+[2026-11-10 22:26:52] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 192.168.1.10 (ID: 330)
+[2026-11-10 22:26:52] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 192.168.1.10 (ID: 331)
+[2026-11-10 22:27:20] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 192.168.1.10:64731 [session=b92fd5610c83]
+[2026-11-10 22:27:21] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 192.168.1.10 (ID: 332)
+[2026-11-10 22:27:29] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session b92fd5610c83 closed (8s)
+[2026-11-10 22:27:29] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 192.168.1.10 (ID: 333)
+[2026-11-10 22:27:50] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 192.168.1.10:64734 [session=85ec13110232]
+[2026-11-10 22:27:51] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 192.168.1.10 (ID: 334)
+[2026-11-10 22:27:54] [INFO] [ihtip-ssh-honeypot:369]: [HONEYPOT] Login SUCCESS: admin@192.168.1.10 (session=85ec13110232)
+[2026-11-10 22:27:54] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.login.success from 192.168.1.10 (ID: 335)
+[2026-11-10 22:28:21] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.command.input from 192.168.1.10 (ID: 336)
+[2026-11-10 22:28:28] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 85ec13110232 closed (37s)
+[2026-11-10 22:28:28] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 192.168.1.10 (ID: 337)
+[2026-11-10 22:28:37] [INFO] [ihtip-ssh-honeypot:419]: [HONEYPOT] New incoming SSH connection from 192.168.1.10:1736 [session=d84c57ddb598]
+[2026-11-10 22:28:37] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.connect from 192.168.1.10 (ID: 338)
+[2026-11-10 22:28:40] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session d84c57ddb598 closed (3s)
+[2026-11-10 22:28:40] [INFO] [ihtip-log-watcher:105]: [+] Ingested event cowrie.session.closed from 192.168.1.10 (ID: 339)
+[2026-11-12 01:53:36] [INFO] [ihtip-ssh-honeypot:533]: [+] REAL SSH HONEYPOT LISTENING on 127.0.0.1:38758 (Banner: OpenSSH 8.9p1 Ubuntu)
+[2026-11-12 01:53:48] [INFO] [ihtip-ssh-honeypot:533]: [+] REAL SSH HONEYPOT LISTENING on 127.0.0.1:38763 (Banner: OpenSSH 8.9p1 Ubuntu)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38764 [session=3fba815fbf83]
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38765 [session=86028a2dc898]
+[2026-11-12 01:53:49] [DEBUG] [ihtip-ssh-honeypot:494]: [HONEYPOT] Connection 3fba815fbf83 ended: Error reading SSH protocol banner[WinError 10053] An established connection was aborted by the software in your host machine
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:507]: [HONEYPOT] Session 3fba815fbf83 closed (1s)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: admin@127.0.0.1 (attempt #1)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38766 [session=ec6e57fd61d1]
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:368]: [HONEYPOT] Login SUCCESS: ubuntu@127.0.0.1 (session=ec6e57fd61d1)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:507]: [HONEYPOT] Session ec6e57fd61d1 closed (1s)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38767 [session=f62181f7cd34]
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: oracle@127.0.0.1 (attempt #1)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38768 [session=3fefa5b236ee]
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: deploy@127.0.0.1 (attempt #1)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38769 [session=745d2c35a6be]
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: postgres@127.0.0.1 (attempt #1)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38770 [session=151247fec5d4]
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: root@127.0.0.1 (attempt #1)
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38771 [session=edf54128b077]
+[2026-11-12 01:53:49] [INFO] [ihtip-ssh-honeypot:368]: [HONEYPOT] Login SUCCESS: root@127.0.0.1 (session=edf54128b077)
+[2026-11-12 01:53:53] [INFO] [ihtip-ssh-honeypot:507]: [HONEYPOT] Session edf54128b077 closed (3s)
+[2026-11-12 01:53:54] [INFO] [ihtip-ssh-honeypot:507]: [HONEYPOT] Session 86028a2dc898 closed (4s)
+[2026-11-12 01:54:20] [INFO] [ihtip-ssh-honeypot:534]: [+] REAL SSH HONEYPOT LISTENING on 127.0.0.1:38778 (Banner: OpenSSH 8.9p1 Ubuntu)
+[2026-11-12 01:54:34] [INFO] [ihtip-ssh-honeypot:534]: [+] REAL SSH HONEYPOT LISTENING on 127.0.0.1:38784 (Banner: OpenSSH 8.9p1 Ubuntu)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38785 [session=8498bc0a0f7e]
+[2026-11-12 01:54:35] [DEBUG] [ihtip-ssh-honeypot:494]: [HONEYPOT] Connection 8498bc0a0f7e ended: Error reading SSH protocol banner[WinError 10054] An existing connection was forcibly closed by the remote host
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38786 [session=9361db081171]
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 8498bc0a0f7e closed (1s)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: admin@127.0.0.1 (attempt #1)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38787 [session=7315d9639321]
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:368]: [HONEYPOT] Login SUCCESS: ubuntu@127.0.0.1 (session=7315d9639321)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 7315d9639321 closed (1s)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38788 [session=2db51e21cd90]
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: oracle@127.0.0.1 (attempt #1)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38789 [session=7ecd67a783d8]
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: deploy@127.0.0.1 (attempt #1)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38790 [session=2c691629e4ca]
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: postgres@127.0.0.1 (attempt #1)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38791 [session=35be06b307c4]
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:380]: [HONEYPOT] Login FAILED: root@127.0.0.1 (attempt #1)
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:418]: [HONEYPOT] New incoming SSH connection from 127.0.0.1:38792 [session=bfff801a4563]
+[2026-11-12 01:54:35] [INFO] [ihtip-ssh-honeypot:368]: [HONEYPOT] Login SUCCESS: root@127.0.0.1 (session=bfff801a4563)
+[2026-11-12 01:54:39] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session bfff801a4563 closed (3s)
+[2026-11-12 01:54:40] [INFO] [ihtip-ssh-honeypot:508]: [HONEYPOT] Session 9361db081171 closed (5s)

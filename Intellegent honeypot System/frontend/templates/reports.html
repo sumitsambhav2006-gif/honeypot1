@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Reports & Threat Export{% endblock %}
+{% block page_title %}Executive Incident Reports & Telemetry Export{% endblock %}
+
+{% block content %}
+<div class="kpi-grid">
+  <!-- PDF Executive Report Card -->
+  <div class="cyber-card" style="border-top: 3px solid var(--cyber-cyan);">
+    <div class="card-title">📑 Executive Threat Briefing (PDF)</div>
+    <p style="font-size: 12px; color: var(--text-secondary); margin: 10px 0 16px;">
+      Comprehensive printable executive summary containing KPI metrics, top threat actors, and critical incident alerts formatted for CISO and Blue Team review.
+    </p>
+    <a href="/api/reports/export?format=pdf" class="btn btn-cyber" download>
+      ⬇️ Download Executive PDF
+    </a>
+  </div>
+
+  <!-- Attacks CSV Export Card -->
+  <div class="cyber-card" style="border-top: 3px solid var(--cyber-green);">
+    <div class="card-title">📊 Raw Attacks Telemetry (CSV)</div>
+    <p style="font-size: 12px; color: var(--text-secondary); margin: 10px 0 16px;">
+      Export normalized honeypot event logs (login attempts, connection timestamps, masked credentials, session identifiers) for external SIEM / Splunk ingestion.
+    </p>
+    <a href="/api/reports/export?format=csv&type=attacks" class="btn btn-outline">
+      ⬇️ Export Attacks (CSV)
+    </a>
+  </div>
+
+  <!-- Attacker Intelligence CSV Export Card -->
+  <div class="cyber-card" style="border-top: 3px solid var(--cyber-amber);">
+    <div class="card-title">🌐 Threat Actor Profiles (CSV)</div>
+    <p style="font-size: 12px; color: var(--text-secondary); margin: 10px 0 16px;">
+      Full list of unique attacker IPs enriched with geolocation coordinates, ISP, ASN, reputation scores, and total attack frequencies.
+    </p>
+    <a href="/api/reports/export?format=csv&type=attackers" class="btn btn-outline">
+      ⬇️ Export Threat Actors (CSV)
+    </a>
+  </div>
+
+  <!-- Command Forensics CSV Export Card -->
+  <div class="cyber-card" style="border-top: 3px solid var(--cyber-purple);">
+    <div class="card-title">💻 Captured Commands (CSV)</div>
+    <p style="font-size: 12px; color: var(--text-secondary); margin: 10px 0 16px;">
+      Full forensics log of attacker shell execution strings, categorization categories, and assigned MITRE risk points.
+    </p>
+    <a href="/api/reports/export?format=csv&type=commands" class="btn btn-outline">
+      ⬇️ Export Commands (CSV)
+    </a>
+  </div>
+</div>
+{% endblock %}
+

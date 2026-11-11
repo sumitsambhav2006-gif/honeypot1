@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Attacker Sessions{% endblock %}
+{% block page_title %}Adversary Interactive Session Forensics{% endblock %}
+
+{% block content %}
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">⏱️ Captured Attacker Sessions</div>
+      <div class="card-subtitle">End-to-end interactive terminal sessions captured inside fake Linux environment</div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="cyber-table">
+      <thead>
+        <tr>
+          <th>Session ID</th>
+          <th>Attacker IP</th>
+          <th>Origin</th>
+          <th>Start Time (UTC)</th>
+          <th>Duration</th>
+          <th>Commands Run</th>
+          <th>Risk Score</th>
+          <th>Status</th>
+          <th>Forensic Action</th>
+        </tr>
+      </thead>
+      <tbody id="sessions-tbody">
+        <tr>
+          <td colspan="9" style="text-align: center; color: var(--text-muted);">Loading session telemetry...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal / Forensic Timeline View -->
+<div id="forensic-modal" class="cyber-card" style="display: none; border-color: var(--cyber-cyan); box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);">
+  <div class="card-header">
+    <div>
+      <div class="card-title">🔎 Forensic Timeline: <span id="modal-session-id" class="mono-cell"></span></div>
+      <div class="card-subtitle" id="modal-session-info">Loading command timeline...</div>
+    </div>
+    <button class="btn btn-outline" onclick="closeForensicModal()" style="padding: 4px 10px; font-size: 11px;">✕ Close</button>
+  </div>
+
+  <div class="timeline" id="modal-timeline"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/api/sessions?limit=50');
+    const data = await res.json();
+    const tbody = document.getElementById('sessions-tbody');
+
+    if (data.sessions && data.sessions.length > 0) {
+      tbody.innerHTML = data.sessions.map(s => {
+        let riskBadge = 'badge-low';
+        if (s.risk_score >= 80) riskBadge = 'badge-critical';
+        else if (s.risk_score >= 60) riskBadge = 'badge-high';
+        else if (s.risk_score >= 30) riskBadge = 'badge-medium';
+
+        return `
+          <tr>
+            <td class="mono-cell" style="font-weight: 700;">${escapeHtml(s.session_id)}</td>
+            <td class="mono-cell">${escapeHtml(s.source_ip)}</td>
+            <td>${escapeHtml(s.country || 'Unknown')}</td>
+            <td class="mono-cell" style="font-size: 11px;">${s.start_time ? s.start_time.replace('T', ' ').substring(0, 19) : '-'}</td>
+            <td class="mono-cell">${s.duration_seconds}s</td>
+            <td class="mono-cell">${s.command_count} cmds</td>
+            <td><span class="badge ${riskBadge}">${s.risk_score} / 100</span></td>
+            <td><span class="badge ${s.status === 'active' ? 'badge-active' : 'badge-closed'}">${s.status}</span></td>
+            <td>
+              <button class="btn btn-cyber" onclick="inspectSession('${s.session_id}')" style="padding: 4px 10px; font-size: 11px;">
+                Inspect Timeline ➔
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    } else {
+      tbody.innerHTML = '<tr><td colspan="9" style="text-align: center;">No recorded sessions yet.</td></tr>';
+    }
+  } catch (err) {
+    console.error('Error fetching sessions:', err);
+  }
+});
+
+async function inspectSession(sessionId) {
+  const modal = document.getElementById('forensic-modal');
+  const title = document.getElementById('modal-session-id');
+  const timeline = document.getElementById('modal-timeline');
+  title.innerText = sessionId;
+  modal.style.display = 'block';
+  modal.scrollIntoView({ behavior: 'smooth' });
+
+  try {
+    const res = await fetch(`/api/sessions/${sessionId}/commands`);
+    const data = await res.json();
+
+    if (data.commands && data.commands.length > 0) {
+      timeline.innerHTML = data.commands.map(cmd => {
+        let dotClass = '';
+        if (cmd.risk_points >= 20) dotClass = 'critical';
+        else if (cmd.risk_points >= 15) dotClass = 'high';
+
+        return `
+          <div class="timeline-item">
+            <div class="timeline-dot ${dotClass}"></div>
+            <div class="timeline-content">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span class="badge badge-medium">${escapeHtml(cmd.category)}</span>
+                <span class="timeline-time">${cmd.timestamp ? new Date(cmd.timestamp).toLocaleTimeString() : ''} · +${cmd.risk_points} pts</span>
+              </div>
+              <div style="background: #05080e; padding: 8px 12px; border-radius: 4px; font-family: var(--font-mono); color: #38bdf8; font-size: 12px;">
+                $ ${escapeHtml(cmd.command)}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    } else {
+      timeline.innerHTML = '<div style="color: var(--text-muted); font-size: 12px; padding: 10px;">No terminal commands recorded for this session.</div>';
+    }
+  } catch (err) {
+    console.error('Error fetching commands:', err);
+  }
+}
+
+function closeForensicModal() {
+  document.getElementById('forensic-modal').style.display = 'none';
+}
+</script>
+{% endblock %}
+

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Attacker IP Intelligence{% endblock %}
+{% block page_title %}Threat Actor & Attacker IP Intelligence{% endblock %}
+
+{% block content %}
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">🌐 Identified Threat Actors & Origin Telemetry</div>
+      <div class="card-subtitle">Aggregated threat actor profiles enriched with ASN, Country, and Threat Reputation</div>
+    </div>
+    <div style="display: flex; gap: 12px;">
+      <input type="text" id="attacker-search" class="form-input" placeholder="Search IP, Country, ASN..." onkeyup="filterTable('attacker-search', 'attackers-table')">
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="cyber-table" id="attackers-table">
+      <thead>
+        <tr>
+          <th>Source IP</th>
+          <th>Location</th>
+          <th>Coordinates</th>
+          <th>ASN & Provider</th>
+          <th>Threat Score</th>
+          <th>Total Hits</th>
+          <th>Last Seen</th>
+        </tr>
+      </thead>
+      <tbody id="attackers-tbody">
+        <tr>
+          <td colspan="7" style="text-align: center; color: var(--text-muted);">Loading threat actor telemetry...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/api/attackers?limit=100');
+    const data = await res.json();
+    const tbody = document.getElementById('attackers-tbody');
+
+    if (data.attackers && data.attackers.length > 0) {
+      tbody.innerHTML = data.attackers.map(a => {
+        let repBadge = 'badge-low';
+        let barColor = '#10b981';
+        if (a.reputation >= 80) { repBadge = 'badge-critical'; barColor = '#ef4444'; }
+        else if (a.reputation >= 60) { repBadge = 'badge-high'; barColor = '#f59e0b'; }
+        else if (a.reputation >= 30) { repBadge = 'badge-medium'; barColor = '#3b82f6'; }
+
+        return `
+          <tr>
+            <td class="mono-cell" style="font-weight: 700;">${escapeHtml(a.source_ip)}</td>
+            <td>
+              <span style="font-size: 14px; margin-right: 4px;">🏳️</span>
+              ${escapeHtml(a.country)} <span style="color: var(--text-muted); font-size: 11px;">(${escapeHtml(a.country_code)})</span>
+            </td>
+            <td class="mono-cell" style="font-size: 11px; color: var(--text-muted);">
+              ${a.latitude ? a.latitude.toFixed(2) : '0.00'}, ${a.longitude ? a.longitude.toFixed(2) : '0.00'}
+            </td>
+            <td>
+              <div style="font-weight: 500; font-size: 12px; color: var(--text-primary);">${escapeHtml(a.asn || 'Unknown')}</div>
+              <div style="font-size: 11px; color: var(--text-muted);">${escapeHtml(a.isp || 'N/A')}</div>
+            </td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="badge ${repBadge}">${a.reputation} / 100</span>
+                <div style="width: 50px; height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden;">
+                  <div style="width: ${a.reputation}%; height: 100%; background: ${barColor};"></div>
+                </div>
+              </div>
+            </td>
+            <td class="mono-cell">${a.total_attacks}</td>
+            <td class="mono-cell" style="font-size: 11px;">${a.last_seen ? new Date(a.last_seen).toLocaleString() : '-'}</td>
+          </tr>
+        `;
+      }).join('');
+    } else {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No threat actor records found.</td></tr>';
+    }
+  } catch (err) {
+    console.error('Error fetching attackers:', err);
+  }
+});
+</script>
+{% endblock %}
+

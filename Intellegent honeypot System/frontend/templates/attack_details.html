@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}SSH Attack Events{% endblock %}
+{% block page_title %}Normalized SSH Attack Event Log{% endblock %}
+
+{% block content %}
+<div class="cyber-card">
+  <div class="card-header">
+    <div>
+      <div class="card-title">⚡ Raw Normalized Ingestion Records</div>
+      <div class="card-subtitle">Zero-trust credential masking enforced · UTC normalized timestamps</div>
+    </div>
+    <div style="display: flex; gap: 12px;">
+      <select id="event-type-filter" class="form-input" style="font-family: var(--font-mono); font-size: 12px;">
+        <option value="">All Event Types</option>
+        <option value="cowrie.login.failed">cowrie.login.failed</option>
+        <option value="cowrie.login.success">cowrie.login.success</option>
+        <option value="cowrie.command.input">cowrie.command.input</option>
+        <option value="cowrie.session.connect">cowrie.session.connect</option>
+        <option value="cowrie.session.closed">cowrie.session.closed</option>
+      </select>
+      <input type="text" id="attack-search" class="form-input" placeholder="Search IP or User..." onkeyup="filterTable('attack-search', 'attacks-table')">
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="cyber-table" id="attacks-table">
+      <thead>
+        <tr>
+          <th>Timestamp (UTC)</th>
+          <th>Source IP</th>
+          <th>Country</th>
+          <th>Event Type</th>
+          <th>Attempted User</th>
+          <th>Masked Credential</th>
+          <th>Session ID</th>
+        </tr>
+      </thead>
+      <tbody id="attacks-tbody">
+        <tr>
+          <td colspan="7" style="text-align: center; color: var(--text-muted);">Querying attack logs...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+async function loadAttacks(eventType = '') {
+  try {
+    const url = eventType ? `/api/attacks?limit=100&event_type=${encodeURIComponent(eventType)}` : '/api/attacks?limit=100';
+    const res = await fetch(url);
+    const data = await res.json();
+    const tbody = document.getElementById('attacks-tbody');
+
+    if (data.attacks && data.attacks.length > 0) {
+      tbody.innerHTML = data.attacks.map(e => `
+        <tr>
+          <td class="mono-cell">${e.timestamp ? new Date(e.timestamp).toISOString().replace('T', ' ').substring(0, 19) : '-'}</td>
+          <td class="mono-cell">${escapeHtml(e.source_ip)}</td>
+          <td>${escapeHtml(e.country || 'Unknown')}</td>
+          <td><span class="badge ${getEventBadgeClass(e.event_type)}">${escapeHtml(e.event_type)}</span></td>
+          <td class="mono-cell" style="color: #f8fafc;">${escapeHtml(e.username || '-')}</td>
+          <td class="mono-cell" style="color: var(--text-muted); font-size: 11px;">${escapeHtml(e.password_masked || 'None')}</td>
+          <td class="mono-cell" style="font-size: 11px;">${escapeHtml(e.session_id || '-')}</td>
+        </tr>
+      `).join('');
+    } else {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No matching attack records.</td></tr>';
+    }
+  } catch (err) {
+    console.error('Error fetching attacks:', err);
+  }
+}
+
+document.getElementById('event-type-filter').addEventListener('change', (e) => {
+  loadAttacks(e.target.value);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadAttacks();
+});
+</script>
+{% endblock %}
+
